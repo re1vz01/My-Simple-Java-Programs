@@ -1,0 +1,13 @@
+public static void main(String[] args){
+		
+		int num1 = 0, num2 = 1, fib = 7; // fib represents of how many numbers in a series.
+		
+		for(int i = 0; i < fib; i++){
+			System.out.print(num1 +  "\t");
+			int temp = num1 + num2;
+			num1 = num2;
+			num2 = temp;
+		}
+	//output
+	//0	1	1	2	3	5	8
+}
