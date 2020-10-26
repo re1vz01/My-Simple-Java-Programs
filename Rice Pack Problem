@@ -1,0 +1,15 @@
+// If the sum is greater than goal, ensure that only full bags are used towards the goal amount. For example, 
+// if goal = 9, big = 2, and small = 0, the method should return false since each big bag is 5 kilos and 
+// cannot be divided. However, if goal = 9, big = 1, and small = 5, the method should return true 
+/// because of 1 full big bag and 4 full small bags equal goal, and it's okay if there are additional bags left over.
+
+static boolean ricePackProblem(int big, int small, int goal){
+        if(big * 5 >= goal){
+            if(small >= goal % 5){
+                return true;
+            }
+        }else if(small + big * 5 >= goal){
+            return true;
+        }
+        return false;
+    }
