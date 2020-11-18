@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+public class Main {
+
+    static Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+
+        BankAccount newAccount = new BankAccount("Edward Newgate", "5471", 500.00);
+        System.out.println("WELCOME TO XYZ'S BANK");
+        System.out.println("Hi! " + newAccount.accountName + ".");
+        System.out.println("ID: " + newAccount.customerID + ".");
+        printActions();
+        while(true){
+            System.out.println("Enter option: (0 for list of actions)");
+            int action = scanner.nextInt();
+            switch (action){
+
+                case 0:
+                    printActions();
+                    break;
+
+                case 1:
+                    newAccount.depositAmount();
+                    break;
+
+                case 2:
+                    newAccount.withdrawAmount();
+                    break;
+
+                case 3:
+                    newAccount.getBalance();
+                    break;
+
+                case 4:
+                    System.out.println("Exiting application. \nThank you for banking with us.");
+                    break;
+
+                default:
+                    System.out.println("Invalid input!");
+                    break;
+            }
+
+
+
+        }
+    }
+    public static void printActions(){
+        System.out.println("\n1. Deposit amount\n" +
+                            "2. Withdraw amount\n" +
+                            "3. Balance inquiry\n" +
+                            "4. Exit application\n");
+    }
+}
+
+
+import java.util.Scanner;
+
+public class BankAccount {
+
+    double balance;
+    String accountName;
+    String customerID;
+
+    private static Scanner scanner = new Scanner(System.in);
+
+    public BankAccount(String accountName, String customerID, double balance) {
+        this.accountName = accountName;
+        this.customerID = customerID;
+        this.balance = balance;
+    }
+
+    public double getBalance(){
+        System.out.println("Your balance is: " + this.balance);
+        System.out.println();
+        return this.balance;
+    }
+
+    public void depositAmount(){
+        System.out.print("Enter amount to deposit: ");
+        int depositAmount = scanner.nextInt();
+        this.balance += depositAmount;
+        System.out.println("Deposited " + depositAmount + " in your bank account.\n");
+
+    }
+
+    public void withdrawAmount(){
+        System.out.print("Enter amount to withdraw: ");
+        int withdrawAmount = scanner.nextInt();
+        if(withdrawAmount > this.balance){
+            System.out.println("Insufficient funds.\n ");
+        }else {
+            this.balance -= withdrawAmount;
+            System.out.println("Withdrawn " + withdrawAmount + " in your bank account.\n");
+        }
+    }
+
+
+}
